@@ -1,5 +1,5 @@
-# data-sploit
-this tool for networking
+# webJoe
+This is a framework for web penetration testers and web developers
 
 # installation 
 to work without any problem you should install
@@ -7,8 +7,8 @@ to work without any problem you should install
 pkg update upgrade
 pkg install git python
 pip install --upgrade pip
-git clone https://github.com/y0usefalsaadany/data-sploit.git
-cd data-sploit
+git clone https://github.com/y0usefalsaadany/webJoe.git
+cd webJoe
 ```
 
 # setup
@@ -19,5 +19,5 @@ pip install -r requirements.txt
 
 # running
 ```
-python network.py
+python run.py
 ```
