@@ -1,0 +1,7 @@
+requests
+scapy
+termcolor
+sockets
+python-whois
+stegano
+PyAutoGUI
