@@ -18,7 +18,7 @@ print (colored(banner,"green"))
 
 def api():
     url = input(colored("Enter example 'http://www.google.com/api' :\n","yellow"))
-    file = open("without-api.txt","r")
+    file = open("api/without-api.txt","r")
     read_list = file.read()
     apis = read_list.splitlines()
     if url == "":
@@ -49,7 +49,7 @@ def api():
 	
 def without_api():
     url = input(colored("Enter example 'http://www.google.com/' :\n","yellow"))
-    file = open("Api.txt","r")
+    file = open("api/Api.txt","r")
     read_list = file.read()
     apis = read_list.splitlines()
     if url == "" or "/api/" in url or "api/" in url:
