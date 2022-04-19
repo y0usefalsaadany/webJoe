@@ -18,7 +18,7 @@ else:
 	if "http" in url or "www" in url:
 		print (colored("[-_-] sorry enter url without http or www","red"))
 	else:
-		file = open("subdomain.txt","r")
+		file = open("data-sploit/subdomain.txt","r")
 		read_list = file.read()
 		subdomains = read_list.splitlines()
 		file_name = input(colored("enter name text file : ","yellow"))
@@ -32,7 +32,7 @@ else:
 				if request.status_code == 200:
 					print (colored(f"[+] subdomain: {domain} ","cyan"))
 			
-					with open(f"{file_name}.txt","a") as list :
+					with open(f"data-sploit/{file_name}.txt","a") as list :
 						print(domain, file = list)
 			except requests.ConnectionError:
 				pass

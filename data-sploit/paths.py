@@ -1,6 +1,6 @@
 from termcolor import *
-import requests
-import sys				
+import sys
+import requests		
 
 banner = """
 
@@ -21,7 +21,7 @@ banner = """
 """
 print (colored(banner,"red"))
 url = input(colored("Enter example 'http://www.google.com' :\n","yellow"))
-file = open("paths.txt","r")
+file = open("data-sploit/paths.txt","r")
 read_list = file.read()
 paths = read_list.splitlines()
 file_name = input(colored("enter name text file : ","yellow"))
@@ -40,7 +40,7 @@ else:
 			if request.status_code == 200:
 				print (colored(f"[+] link -->: {words} ", "red"))
 			
-				with open(f"files/{file_name}.txt","a") as list :
+				with open(f"data-sploit/files/{file_name}.txt","a") as list :
 					print(words, file = list)
 		except requests.ConnectionError:
 			pass
