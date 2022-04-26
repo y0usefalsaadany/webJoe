@@ -40,35 +40,34 @@ chooises = f"""
 
 ----------------------------------------------------
 """
-while True:
-	try:
-		print(chooises)
-		inpt = input("Choose Number : ")
-		sys.path.insert(0, 'data-sploit')
-		if inpt == "1":
-			import siteInfo
+try:
+	print(chooises)
+	inpt = input("Choose Number : ")
+	sys.path.insert(0, 'data-sploit')
+	if inpt == "1":
+		import siteInfo
 
-		if inpt == "2":
-			import sourceCode
-			
-		if inpt == "3":
-			import subdomain
-			
-		if inpt == "4":
-			import paths
-		sys.path.insert(0, 'api')
-		if inpt == "5":
-			import api
-
-		sys.path.insert(0, 'make_list')
-		if inpt == "6":
-			import list
+	if inpt == "2":
+		import sourceCode
 		
-		sys.path.insert(0, 'crack')
-		if inpt == "7":
-			import crack
-			
-		else:
-			print ('Enter one of the numbers shown in front of you.')
-	except KeyboardInterrupt:
-		sys.exit()
+	if inpt == "3":
+		import subdomain
+		
+	if inpt == "4":
+		import paths
+	sys.path.insert(0, 'api')
+	if inpt == "5":
+		import api
+
+	sys.path.insert(0, 'make_list')
+	if inpt == "6":
+		import list
+	
+	sys.path.insert(0, 'crack')
+	if inpt == "7":
+		import crack
+		
+	# else:
+	# 	print ('Enter one of the numbers shown in front of you.')
+except KeyboardInterrupt:
+	sys.exit()
