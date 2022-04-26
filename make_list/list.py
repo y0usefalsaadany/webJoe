@@ -26,7 +26,7 @@ def only_words():
         file = input('enter file name : \n')
         for count in range(int(words)):
             try:
-                character = ''.join(random.choice(string.ascii_lowercase) for i in range(int(many_letters)))
+                character = ''.join(random.choice(letters) for i in range(int(many_letters)))
                 print(f'[+] Creating word {count} [+]')
                 with open(f'{file}.txt','a') as list :
                     print(character, file=list)
@@ -39,7 +39,6 @@ def only_words():
 
 def only_numbers():
     try:
-        letters = string.ascii_lowercase
         words = input('How many numbers do you want ? \n')
         many_letters = input('How many letters do you want ? \n')
         file = input('enter file name : \n')
@@ -66,7 +65,7 @@ def words_with_numbers():
         for count in range(int(words)):
             try:
                 numbers = '1234567890'
-                character = ''.join(random.choice(string.ascii_lowercase + numbers) for i in range(int(many_letters)))
+                character = ''.join(random.choice(letters + numbers) for i in range(int(many_letters)))
                 print(f'[+] Creating word {count} [+]')
                 with open(f'{file}.txt','a') as list :
                     print(character, file=list)
@@ -85,8 +84,8 @@ def words_with_numbers_and_symbols():
         for count in range(int(words)):
             try:
                 numbers = '1234567890'
-                symbols = '/,.<>][}{()*&^%$#+_=-!~;:\\'
-                character = ''.join(random.choice(string.ascii_lowercase + numbers + symbols) for i in range(int(many_letters)))
+                symbols = '/,.<>][}{() *&^%$#+_=-!~;:\\'
+                character = ''.join(random.choice(letters + numbers + symbols) for i in range(int(many_letters)))
                 print(f'[+] Creating word {count} [+]')
                 with open(f'{file}.txt','a') as list :
                     print(character, file=list)
@@ -99,7 +98,6 @@ def words_with_numbers_and_symbols():
 
 
 try:
-    os.system('cls||clear')
     banner = """
     1- make list only words
     2- make list only numbers
