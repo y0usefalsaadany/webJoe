@@ -36,28 +36,28 @@ def api():
                 if request_get.status_code == 200:
                     print (colored(f"[+] Get Method : link -->: {words} ", "yellow"))
                 
-                    with open("api/output.txt","a") as list :
+                    with open("api-output.txt","a") as list :
                         print(words, file = list)
                 
                 request_post = requests.post(words ,"html.parser")
                 if request_post.status_code == 200:
                     print (colored(f"[+] Post Method :link -->: {words} ", "yellow"))
                 
-                    with open("api/output.txt","a") as list :
+                    with open("api-output.txt","a") as list :
                         print(words, file = list)
 
                 request_put = requests.put(words ,"html.parser")
                 if request_put.status_code == 200:
                     print (colored(f"[+] Put Method :link -->: {words} ", "yellow"))
                 
-                    with open("api/output.txt","a") as list :
+                    with open("api-output.txt","a") as list :
                         print(words, file = list)
                 
                 request_delete = requests.delete(words)
                 if request_delete.status_code == 200:
                     print (colored(f"[+] Delete Method :link -->: {words} ", "yellow"))
                 
-                    with open("api/output.txt","a") as list :
+                    with open("api-output.txt","a") as list :
                         print(words, file = list)
 
             except requests.ConnectionError:
@@ -90,7 +90,7 @@ def without_api():
                 if request.status_code == 200:
                     print (colored(f"[+] link -->: {words} ", "yellow"))
                 
-                    with open("api/output.txt","a") as list :
+                    with open("api-output.txt","a") as list :
                         print(words, file = list)
             except requests.ConnectionError:
                 pass
