@@ -32,7 +32,7 @@ else:
 				if request.status_code == 200:
 					print (colored(f"[+] subdomain: {domain} ","cyan"))
 			
-					with open(f"data-sploit/{file_name}.txt","a") as list :
+					with open(f"{file_name}.txt","a") as list :
 						print(domain, file = list)
 			except requests.ConnectionError:
 				pass

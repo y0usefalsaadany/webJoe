@@ -19,7 +19,7 @@ else:
 		print (colored(f"-" * 48 ,"yellow"))
 		
 		if get_info(domain):
-			whois_info = whois.whois(domain_name)
+			whois_info = whois.whois(domain)
 		
 		print (colored(f"-" * 48 ,"yellow"))
 		print (colored(f"[+]	 	 ....Done.... 		 ","yellow"))
