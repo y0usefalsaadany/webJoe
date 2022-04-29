@@ -3,4 +3,4 @@ termcolor
 sockets
 python-whois
 string
-whois
+
