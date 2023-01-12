@@ -2,4 +2,3 @@ requests
 termcolor
 sockets
 python-whois
-strings
