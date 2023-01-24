@@ -7,6 +7,7 @@ class banner:
 
     def __init__(this):
         print (this.title())
+        print (this.choices())
     def title(this):
 
         os.system('cls||clear')
@@ -43,8 +44,7 @@ class banner:
         ----------------------------------------------------
         """
         return choices
-# t = banner()
-# print (t.choices())
+
 
 
 
