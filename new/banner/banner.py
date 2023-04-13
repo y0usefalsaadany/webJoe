@@ -9,7 +9,7 @@ class banner:
         (this.choices())
     def title(this):
 
-        os.system('cls||clear')
+        os.system('clear||cls')
         description ="""
         Joe framework tool for penetesters and develpoers
         """
