@@ -9,11 +9,11 @@ class choices:
             sys.path.insert(0, '../tool')
             if this.tool_num == 1:
                 from tool.domainInfo import domain_info
-                domain_info.domain_info()
+                domain_info
 
             elif this.tool_num == 2:
                 from tool.sourceCode import sourceCode
-                sourceCode.sourceCode()
+                sourceCode
             elif this.tool_num == 3:
                 from tool.subdomain import subdomain
 

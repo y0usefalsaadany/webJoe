@@ -8,6 +8,9 @@ This is a framework for web penetration testers and web developers
 ```
 docker build --tag webjoe-docker .
 docker run -it --name=webjoe-container  webjoe-docker
+docker start webjoe-container
+docker exec -it webjoe-container /bin/sh
+docker cp webjoe-container:/app/dy.txt .
 ```
 to work without any problem you should install
 ```
@@ -28,5 +31,5 @@ pip3 install -r requirements.txt
 
 # running
 ```
-python run.py
+python3 run.py
 ```

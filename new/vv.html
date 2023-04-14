@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quordle</title>
+    <!--<meta name="description" content="Put your skills to the test and solve four words at once! You have 9 guesses to solve all four words. A new Quordle available each day to solve." />-->
+    <meta name="keywords" content="quordle, game, puzzle, word, words, letters, play, online, guess, brain teaser, dordle" />
+    <meta name="author" content="Freddie Meyer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <!-- FB Meta Tags -->
+    <meta property="og:url" content="https://www.quordle.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Quordle" />
+    <!--<meta property="og:description" content="Put your skills to the test and solve four words at once! You have 9 guesses to solve all four words. A new Quordle available each day to solve." />-->
+    <meta property="og:image" content="https://www.quordle.com/quordle-banner-1200.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="www.quordle.com" />
+
+    <link rel="canonical" href="https://www.quordle.com/" />
+
+    <meta name="theme-color" content="#111827" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="shortcut icon" sizes="192x192" href="favicon-192.png" />
+    <link rel="shortcut icon" sizes="128x128" href="favicon-128.png" />
+    <link rel="apple-touch-icon" sizes="128x128" href="favicon-128.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="128x128" href="favicon-128.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-TFNTWFL');
+    </script>
+    <!-- End Google Tag Manager -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <script>
+      window.__COMMIT_REF__ = '47359e0';
+      window.wordchecking_url = 'https://www.merriam-webster.com/games/quordle';
+      window.quordle_url = 'https://www.quordle.com';
+      window.quordle_time = '2023-01-04';
+      window.quordle_api_url = 'https://prod-mw-cms.m-w.com';
+      try {
+        const mwsl = new URLSearchParams(location.search);
+        const mwpv = mwsl.get('mwrd');
+        const mwac = mwsl.get('mwac');
+
+        if (mwpv && mwac) {
+          gtag('event', 'parameterCheck', {
+            event_category: 'Quordle - Migration Check',
+            event_label: 'Parameter Check Pass',
+          });
+        }
+
+        const mwach = JSON.parse(window.atob(decodeURIComponent(mwac ? mwac : '')));
+        const mwgd = JSON.parse(window.atob(decodeURIComponent(mwpv ? mwpv : '')));
+
+        const mwfd = new Date(window.quordle_time + 'T00:00:00').setHours(0, 0, 0, 0);
+        const mwtd = new Date(Date.now()).setHours(0, 0, 0, 0);
+
+        if (
+          mwpv &&
+          mwac &&
+          location.href.indexOf(window.wordchecking_url) >= 0 &&
+          !localStorage.getItem('mw_gs_quordle_migration') &&
+          mwtd >= mwfd
+        ) {
+          localStorage.setItem('mw_gs_quordle_last_daily', mwgd.daily.seed);
+          localStorage.setItem('mw_gs_quordle_daily_guesses', mwgd.daily.guesses);
+          localStorage.setItem('mw_gs_quordle_daily_current', mwgd.daily.current);
+          localStorage.setItem('mw_gs_quordle_daily_history', mwgd.daily.history);
+          localStorage.setItem('mw_gs_quordle_daily_current_streak', mwgd.daily.currentStreak);
+          localStorage.setItem('mw_gs_quordle_daily_max_streak', mwgd.daily.maxStreak);
+
+          localStorage.setItem('mw_gs_quordle_last_free', mwgd.free.seed);
+          localStorage.setItem('mw_gs_quordle_free_guesses', mwgd.free.guesses);
+          localStorage.setItem('mw_gs_quordle_free_current', mwgd.free.current);
+          localStorage.setItem('mw_gs_quordle_free_history', mwgd.free.history);
+          localStorage.setItem('mw_gs_quordle_free_current_streak', mwgd.free.currentStreak);
+          localStorage.setItem('mw_gs_quordle_free_max_streak', mwgd.free.maxStreak);
+
+          localStorage.setItem('mw_gs_quordle_dark_mode', mwgd.darkMode);
+          localStorage.setItem('mw_gs_quordle_colorblind', mwgd.colorblind);
+          localStorage.setItem('mw_gs_quordle_vibration', mwgd.vibration);
+          localStorage.setItem('mw_gs_quordle_achievement_notifs', mwgd.achievementNotifs);
+          localStorage.setItem('mw_gs_quordle_keyboard_height', mwgd.keyboardHeight);
+          localStorage.setItem('mw_gs_quordle_game_size', mwgd.gameSize);
+          localStorage.setItem('mw_gs_quordle_share_time', mwgd.shareTime);
+          localStorage.setItem('mw_gs_quordle_donation_time', mwgd.donationTime);
+          localStorage.setItem('mw_gs_quordle_enter_bs_reversed', mwgd.enterBsReversed);
+
+          localStorage.setItem('mw_gs_quordle_achievements', mwach);
+          localStorage.setItem('mw_gs_quordle_migration', true);
+
+          gtag('event', 'completedMigration', {
+            event_category: 'Quordle - Migration Check',
+            event_label: 'Migration Completed with Data Saved',
+            game_data: {
+              achievements: mwach,
+              stats: mwgd,
+            },
+          });
+
+          mwsl.delete('mwac');
+          mwsl.delete('mwrd');
+        } else if (
+          mwpv &&
+          mwac &&
+          location.href.indexOf(window.wordchecking_url) >= 0 &&
+          localStorage.getItem('mw_gs_quordle_migration') &&
+          mwtd >= mwfd
+        ) {
+          mwsl.delete('mwac');
+          mwsl.delete('mwrd');
+
+          gtag('event', 'alreadyMigrated', {
+            event_category: 'Quordle - Migration Check',
+            event_label: 'Already Migrated',
+            game_data: {
+              achievements: mwach,
+              stats: mwgd,
+            },
+          });
+        }
+      } catch (err) {
+        console.log(err);
+        const mwsl = new URLSearchParams(location.search);
+        const mwpv = mwsl.get('mwrd');
+        const mwac = mwsl.get('mwac');
+        if (mwpv && mwac) {
+          gtag('event', 'fail', {
+            event_category: 'Quordle - Migration Check',
+            event_label: 'Data is malformed / Error',
+            game_data: {
+              mpv: mwpv,
+              mwac: mwac,
+            },
+          });
+        }
+      } finally {
+        window.quordle_load = true;
+        const mwsl = new URLSearchParams(location.search);
+        const mwpv = mwsl.get('mwrd');
+        const mwac = mwsl.get('mwac');
+
+        if (mwpv && mwac) {
+          window.history.replaceState({}, document.title, window.wordchecking_url + '/');
+        }
+      }
+    </script>
+
+    <!-- CafeMedia -->
+    <script>
+      const cafeMediaSiteId = '62d82df2aa320b2a23fc1466';
+      const insertHeadTag = () => {
+        window.adthrive = {};
+        window.adthrive.cmd = [];
+        window.adthrive.host = 'ads.adthrive.com';
+        window.adthrive.plugin = 'cam-manual-spa';
+        window.adthrive.threshold = Math.floor(Math.random() * 100 + 1);
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.type = 'text/javascript';
+        script.src =
+          'https://ads.adthrive.com/sites/' + cafeMediaSiteId + '/ads.min.js?threshold=' + window.adthrive.threshold;
+        const node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(script, node);
+      };
+
+      const cleanUpSelectors = [
+        'iframe[src*="track.adthrive"]',
+        'iframe[src*="d.agkn.com"]',
+        'iframe[src*="ads.adthrive"]',
+        'script[src*="ads.adthrive"]',
+        'script[src*="confiant"]',
+        'script[src*="securepubads"]',
+        'script[src*="amazon-adsystem"]',
+        'script[src*="scorecardresearch"]',
+        'script[src*="js.agkn.com"]',
+        'link[rel="stylesheet"][href^="https://ads.adthrive"]',
+        '.adthrive-comscore',
+        '.adthrive-ad',
+      ];
+
+      const initCleanUpSelectors = [
+        '.adthrive-comscore span',
+        '.adthrive-ccpa-link',
+        '.adthrive-privacy-preferences',
+        '.adthrive-comscore.adthrive-footer-message',
+      ];
+
+      const cleanupAds = () => {
+        if (!window.adthrive) return;
+
+        document.body.classList.remove('adthrive-device-desktop', 'adthrive-device-tablet', 'adthrive-device-phone');
+
+        initCleanUpSelectors.forEach((selector) =>
+          document.querySelectorAll(selector).forEach((el, i) => {
+            if (i > 0) el.remove();
+          })
+        );
+
+        if (window.googletag && window.googletag.destroySlots) {
+          window.googletag.destroySlots();
+        }
+
+        if (window.adthrive.slots && window.adthrive.slots._slots && window.adthrive.slots._slots.size) {
+          window.adthrive.slots._slots.forEach((slot) => {
+            window.adthrive.slots._slots.delete(slot);
+          });
+        }
+
+        if (
+          window.adthrive._googleAdManager &&
+          window.adthrive._googleAdManager._slots &&
+          window.adthrive._googleAdManager._slots._slots &&
+          window.adthrive._googleAdManager._slots._slots.size
+        ) {
+          window.adthrive._googleAdManager._slots._slots.forEach((slot) => {
+            window.adthrive._googleAdManager._slots._slots.delete(slot.id);
+          });
+        }
+
+        if (window.adthrive && window.adthrive._googleAdManager) {
+          window.adthrive._googleAdManager._started = false;
+        }
+
+        if (window.pbjs && typeof window.pbjs.removeAdUnit === 'function') {
+          window.pbjs.removeAdUnit();
+        }
+
+        cleanUpSelectors.forEach((selector) => document.querySelectorAll(selector).forEach((el) => el.remove()));
+      };
+
+      const initializeAds = () => {
+        cleanupAds();
+        insertHeadTag();
+      };
+
+      let locationHref = document.location.href.split('?')[0].replace(/#/, '').replace(/\/+$/, '');
+      let footerExists = !!document.querySelector('#footer-placement');
+      let headerExists = !!document.querySelector('#header-placement');
+      let initializationAllowed = true;
+
+      const addObserver = () => {
+        if (!document.body || !document.querySelector('#root > div')) {
+          setTimeout(addObserver, 50);
+          return;
+        }
+        const observer = new MutationObserver(() => {
+          const intializeTrigger = [];
+
+          const noParamHref = document.location.href.split('?')[0].replace(/#/, '').replace(/\/+$/, '');
+
+          if (locationHref !== noParamHref) {
+            locationHref = noParamHref;
+
+            intializeTrigger.push(true);
+          }
+
+          if (document.querySelector('#footer-placement')) {
+            if (!footerExists) {
+              intializeTrigger.push(true);
+            }
+            footerExists = true;
+          } else {
+            footerExists = false;
+          }
+
+          if (document.querySelector('#header-placement')) {
+            if (!headerExists) {
+              intializeTrigger.push(true);
+            }
+            headerExists = true;
+          } else {
+            headerExists = false;
+          }
+
+          if (intializeTrigger.length > 0 && initializationAllowed) {
+            initializationAllowed = false;
+
+            initializeAds();
+
+            intializeTrigger.length = 0;
+
+            setTimeout(() => {
+              initializationAllowed = true;
+            }, 100);
+          }
+        });
+
+        observer.observe(document.querySelector('body'), {
+          childList: true,
+          subtree: true,
+          attributes: true,
+        });
+      };
+
+      addObserver();
+    </script>
+    <!-- CafeMedia Head Tag -->
+
+    <script src="https://js.sentry-cdn.com/cd8139814dd64a07af2a72fe40bed481.min.js" crossorigin="anonymous"></script>
+    <script>
+      if (!String.prototype.endsWith) {
+        String.prototype.endsWith = function (search, this_len) {
+          if (this_len === undefined || this_len > this.length) {
+            this_len = this.length;
+          }
+          return this.substring(this_len - search.length, this_len) === search;
+        };
+      }
+      if (window.Sentry) {
+        Sentry.onLoad(function () {
+          Sentry.init({
+            dsn:
+              'true' === 'true'
+                ? 'https://cd8139814dd64a07af2a72fe40bed481@o1140342.ingest.sentry.io/6197424'
+                : null,
+            environment: 'prod',
+            release: '1.12.6-main',
+            allowUrls: ['quordle.com/assets', 'merriam-webster.com'],
+            ignoreErrors: [
+              'ResizeObserver',
+              'instantSearchSDKJSBridgeClearHighlight',
+              'webkitExitFullScreen',
+              'flat is not a function',
+              "Object doesn't support property or method 'flat'",
+              'TypeError: cancelled',
+              'TypeError: Load failed',
+              'privateSpecialRepair',
+              'BetterJsPop',
+              'bannerNight',
+              'window.webkit.messageHandlers',
+              'jQuery',
+              'isMainframe',
+              "e.addEventListener is not a function. (In 'e.addEventListener(t,r,n)', 'e.addEventListener' is undefined)",
+              'Non-Error promise rejection captured with value: undefined',
+              'Non-Error promise rejection captured with value: fun-hooks: hooked function not ready',
+              'Non-Error promise rejection captured with value: Not implemented on this platform',
+              'Blocked a restricted frame with origin "https://www.merriam-webster.com" from accessing another frame.',
+              'NotSupportedError: Failed to load because no supported source was found.',
+              'AbortError: The play() request was interrupted because the media was removed from the document. https://goo.gl/LdLk22',
+              "Cannot read properties of null (reading 'document')",
+            ],
+            beforeSend(event) {
+              let shouldIgnore = false;
+
+              // Exclude events that are ad-related
+
+              if (event.breadcrumbs) {
+                shouldIgnore = event.breadcrumbs.some((breadcrumb) => {
+                  if (breadcrumb.data && breadcrumb.data.url) {
+                    return breadcrumb.data.url.includes('securepubads.g.doubleclick.net');
+                  }
+
+                  return false;
+                });
+              }
+
+              // Exclude events that are attempting to fetch mraid.js
+
+              if (!shouldIgnore && event.exception) {
+                shouldIgnore = event.exception.values.some((exception) => {
+                  if (exception.stacktrace && exception.stacktrace.frames) {
+                    return exception.stacktrace.frames.some((frame) => {
+                      if (frame.filename) {
+                        return frame.filename.includes('mraid.js');
+                      }
+
+                      return false;
+                    });
+                  }
+
+                  return false;
+                });
+              }
+
+              return shouldIgnore ? null : event;
+            },
+          });
+        });
+      }
+    </script>
+    <script type="module" crossorigin src="./assets/index.b441a8d7.js"></script>
+    <link rel="stylesheet" href="./assets/index.7e27898e.css">
+  <link rel="manifest" href="./manifest.webmanifest"></head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-TFNTWFL"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="root"></div>
+    
+  </body>
+</html>
+
+b'<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8" />\n    <title>Quordle</title>\n    <!--<meta name="description" content="Put your skills to the test and solve four words at once! You have 9 guesses to solve all four words. A new Quordle available each day to solve." />-->\n    <meta name="keywords" content="quordle, game, puzzle, word, words, letters, play, online, guess, brain teaser, dordle" />\n    <meta name="author" content="Freddie Meyer" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />\n\n    <!-- FB Meta Tags -->\n    <meta property="og:url" content="https://www.quordle.com" />\n    <meta property="og:type" content="website" />\n    <meta property="og:title" content="Quordle" />\n    <!--<meta property="og:description" content="Put your skills to the test and solve four words at once! You have 9 guesses to solve all four words. A new Quordle available each day to solve." />-->\n    <meta property="og:image" content="https://www.quordle.com/quordle-banner-1200.png" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n\n    <!-- Twitter Meta Tags -->\n    <meta name="twitter:card" content="summary_large_image" />\n    <meta property="twitter:domain" content="www.quordle.com" />\n\n    <link rel="canonical" href="https://www.quordle.com/" />\n\n    <meta name="theme-color" content="#111827" />\n    <meta name="color-scheme" content="dark light" />\n    <link rel="shortcut icon" sizes="192x192" href="favicon-192.png" />\n    <link rel="shortcut icon" sizes="128x128" href="favicon-128.png" />\n    <link rel="apple-touch-icon" sizes="128x128" href="favicon-128.png" />\n    <link rel="apple-touch-icon-precomposed" sizes="128x128" href="favicon-128.png" />\n    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />\n    <link rel="preconnect" href="https://fonts.googleapis.com" />\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n\n    <!-- Google Tag Manager -->\n    <script>\n      (function (w, d, s, l, i) {\n        w[l] = w[l] || [];\n        w[l].push({ \'gtm.start\': new Date().getTime(), event: \'gtm.js\' });\n        var f = d.getElementsByTagName(s)[0],\n          j = d.createElement(s),\n          dl = l != \'dataLayer\' ? \'&l=\' + l : \'\';\n        j.async = true;\n        j.src = \'https://www.googletagmanager.com/gtm.js?id=\' + i + dl;\n        f.parentNode.insertBefore(j, f);\n      })(window, document, \'script\', \'dataLayer\', \'GTM-TFNTWFL\');\n    </script>\n    <!-- End Google Tag Manager -->\n    <script>\n      window.dataLayer = window.dataLayer || [];\n      function gtag() {\n        dataLayer.push(arguments);\n      }\n    </script>\n    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />\n    <script>\n      window.__COMMIT_REF__ = \'47359e0\';\n      window.wordchecking_url = \'https://www.merriam-webster.com/games/quordle\';\n      window.quordle_url = \'https://www.quordle.com\';\n      window.quordle_time = \'2023-01-04\';\n      window.quordle_api_url = \'https://prod-mw-cms.m-w.com\';\n      try {\n        const mwsl = new URLSearchParams(location.search);\n        const mwpv = mwsl.get(\'mwrd\');\n        const mwac = mwsl.get(\'mwac\');\n\n        if (mwpv && mwac) {\n          gtag(\'event\', \'parameterCheck\', {\n            event_category: \'Quordle - Migration Check\',\n            event_label: \'Parameter Check Pass\',\n          });\n        }\n\n        const mwach = JSON.parse(window.atob(decodeURIComponent(mwac ? mwac : \'\')));\n        const mwgd = JSON.parse(window.atob(decodeURIComponent(mwpv ? mwpv : \'\')));\n\n        const mwfd = new Date(window.quordle_time + \'T00:00:00\').setHours(0, 0, 0, 0);\n        const mwtd = new Date(Date.now()).setHours(0, 0, 0, 0);\n\n        if (\n          mwpv &&\n          mwac &&\n          location.href.indexOf(window.wordchecking_url) >= 0 &&\n          !localStorage.getItem(\'mw_gs_quordle_migration\') &&\n          mwtd >= mwfd\n        ) {\n          localStorage.setItem(\'mw_gs_quordle_last_daily\', mwgd.daily.seed);\n          localStorage.setItem(\'mw_gs_quordle_daily_guesses\', mwgd.daily.guesses);\n          localStorage.setItem(\'mw_gs_quordle_daily_current\', mwgd.daily.current);\n          localStorage.setItem(\'mw_gs_quordle_daily_history\', mwgd.daily.history);\n          localStorage.setItem(\'mw_gs_quordle_daily_current_streak\', mwgd.daily.currentStreak);\n          localStorage.setItem(\'mw_gs_quordle_daily_max_streak\', mwgd.daily.maxStreak);\n\n          localStorage.setItem(\'mw_gs_quordle_last_free\', mwgd.free.seed);\n          localStorage.setItem(\'mw_gs_quordle_free_guesses\', mwgd.free.guesses);\n          localStorage.setItem(\'mw_gs_quordle_free_current\', mwgd.free.current);\n          localStorage.setItem(\'mw_gs_quordle_free_history\', mwgd.free.history);\n          localStorage.setItem(\'mw_gs_quordle_free_current_streak\', mwgd.free.currentStreak);\n          localStorage.setItem(\'mw_gs_quordle_free_max_streak\', mwgd.free.maxStreak);\n\n          localStorage.setItem(\'mw_gs_quordle_dark_mode\', mwgd.darkMode);\n          localStorage.setItem(\'mw_gs_quordle_colorblind\', mwgd.colorblind);\n          localStorage.setItem(\'mw_gs_quordle_vibration\', mwgd.vibration);\n          localStorage.setItem(\'mw_gs_quordle_achievement_notifs\', mwgd.achievementNotifs);\n          localStorage.setItem(\'mw_gs_quordle_keyboard_height\', mwgd.keyboardHeight);\n          localStorage.setItem(\'mw_gs_quordle_game_size\', mwgd.gameSize);\n          localStorage.setItem(\'mw_gs_quordle_share_time\', mwgd.shareTime);\n          localStorage.setItem(\'mw_gs_quordle_donation_time\', mwgd.donationTime);\n          localStorage.setItem(\'mw_gs_quordle_enter_bs_reversed\', mwgd.enterBsReversed);\n\n          localStorage.setItem(\'mw_gs_quordle_achievements\', mwach);\n          localStorage.setItem(\'mw_gs_quordle_migration\', true);\n\n          gtag(\'event\', \'completedMigration\', {\n            event_category: \'Quordle - Migration Check\',\n            event_label: \'Migration Completed with Data Saved\',\n            game_data: {\n              achievements: mwach,\n              stats: mwgd,\n            },\n          });\n\n          mwsl.delete(\'mwac\');\n          mwsl.delete(\'mwrd\');\n        } else if (\n          mwpv &&\n          mwac &&\n          location.href.indexOf(window.wordchecking_url) >= 0 &&\n          localStorage.getItem(\'mw_gs_quordle_migration\') &&\n          mwtd >= mwfd\n        ) {\n          mwsl.delete(\'mwac\');\n          mwsl.delete(\'mwrd\');\n\n          gtag(\'event\', \'alreadyMigrated\', {\n            event_category: \'Quordle - Migration Check\',\n            event_label: \'Already Migrated\',\n            game_data: {\n              achievements: mwach,\n              stats: mwgd,\n            },\n          });\n        }\n      } catch (err) {\n        console.log(err);\n        const mwsl = new URLSearchParams(location.search);\n        const mwpv = mwsl.get(\'mwrd\');\n        const mwac = mwsl.get(\'mwac\');\n        if (mwpv && mwac) {\n          gtag(\'event\', \'fail\', {\n            event_category: \'Quordle - Migration Check\',\n            event_label: \'Data is malformed / Error\',\n            game_data: {\n              mpv: mwpv,\n              mwac: mwac,\n            },\n          });\n        }\n      } finally {\n        window.quordle_load = true;\n        const mwsl = new URLSearchParams(location.search);\n        const mwpv = mwsl.get(\'mwrd\');\n        const mwac = mwsl.get(\'mwac\');\n\n        if (mwpv && mwac) {\n          window.history.replaceState({}, document.title, window.wordchecking_url + \'/\');\n        }\n      }\n    </script>\n\n    <!-- CafeMedia -->\n    <script>\n      const cafeMediaSiteId = \'62d82df2aa320b2a23fc1466\';\n      const insertHeadTag = () => {\n        window.adthrive = {};\n        window.adthrive.cmd = [];\n        window.adthrive.host = \'ads.adthrive.com\';\n        window.adthrive.plugin = \'cam-manual-spa\';\n        window.adthrive.threshold = Math.floor(Math.random() * 100 + 1);\n\n        const script = document.createElement(\'script\');\n        script.async = true;\n        script.type = \'text/javascript\';\n        script.src =\n          \'https://ads.adthrive.com/sites/\' + cafeMediaSiteId + \'/ads.min.js?threshold=\' + window.adthrive.threshold;\n        const node = document.getElementsByTagName(\'script\')[0];\n        node.parentNode.insertBefore(script, node);\n      };\n\n      const cleanUpSelectors = [\n        \'iframe[src*="track.adthrive"]\',\n        \'iframe[src*="d.agkn.com"]\',\n        \'iframe[src*="ads.adthrive"]\',\n        \'script[src*="ads.adthrive"]\',\n        \'script[src*="confiant"]\',\n        \'script[src*="securepubads"]\',\n        \'script[src*="amazon-adsystem"]\',\n        \'script[src*="scorecardresearch"]\',\n        \'script[src*="js.agkn.com"]\',\n        \'link[rel="stylesheet"][href^="https://ads.adthrive"]\',\n        \'.adthrive-comscore\',\n        \'.adthrive-ad\',\n      ];\n\n      const initCleanUpSelectors = [\n        \'.adthrive-comscore span\',\n        \'.adthrive-ccpa-link\',\n        \'.adthrive-privacy-preferences\',\n        \'.adthrive-comscore.adthrive-footer-message\',\n      ];\n\n      const cleanupAds = () => {\n        if (!window.adthrive) return;\n\n        document.body.classList.remove(\'adthrive-device-desktop\', \'adthrive-device-tablet\', \'adthrive-device-phone\');\n\n        initCleanUpSelectors.forEach((selector) =>\n          document.querySelectorAll(selector).forEach((el, i) => {\n            if (i > 0) el.remove();\n          })\n        );\n\n        if (window.googletag && window.googletag.destroySlots) {\n          window.googletag.destroySlots();\n        }\n\n        if (window.adthrive.slots && window.adthrive.slots._slots && window.adthrive.slots._slots.size) {\n          window.adthrive.slots._slots.forEach((slot) => {\n            window.adthrive.slots._slots.delete(slot);\n          });\n        }\n\n        if (\n          window.adthrive._googleAdManager &&\n          window.adthrive._googleAdManager._slots &&\n          window.adthrive._googleAdManager._slots._slots &&\n          window.adthrive._googleAdManager._slots._slots.size\n        ) {\n          window.adthrive._googleAdManager._slots._slots.forEach((slot) => {\n            window.adthrive._googleAdManager._slots._slots.delete(slot.id);\n          });\n        }\n\n        if (window.adthrive && window.adthrive._googleAdManager) {\n          window.adthrive._googleAdManager._started = false;\n        }\n\n        if (window.pbjs && typeof window.pbjs.removeAdUnit === \'function\') {\n          window.pbjs.removeAdUnit();\n        }\n\n        cleanUpSelectors.forEach((selector) => document.querySelectorAll(selector).forEach((el) => el.remove()));\n      };\n\n      const initializeAds = () => {\n        cleanupAds();\n        insertHeadTag();\n      };\n\n      let locationHref = document.location.href.split(\'?\')[0].replace(/#/, \'\').replace(/\\/+$/, \'\');\n      let footerExists = !!document.querySelector(\'#footer-placement\');\n      let headerExists = !!document.querySelector(\'#header-placement\');\n      let initializationAllowed = true;\n\n      const addObserver = () => {\n        if (!document.body || !document.querySelector(\'#root > div\')) {\n          setTimeout(addObserver, 50);\n          return;\n        }\n        const observer = new MutationObserver(() => {\n          const intializeTrigger = [];\n\n          const noParamHref = document.location.href.split(\'?\')[0].replace(/#/, \'\').replace(/\\/+$/, \'\');\n\n          if (locationHref !== noParamHref) {\n            locationHref = noParamHref;\n\n            intializeTrigger.push(true);\n          }\n\n          if (document.querySelector(\'#footer-placement\')) {\n            if (!footerExists) {\n              intializeTrigger.push(true);\n            }\n            footerExists = true;\n          } else {\n            footerExists = false;\n          }\n\n          if (document.querySelector(\'#header-placement\')) {\n            if (!headerExists) {\n              intializeTrigger.push(true);\n            }\n            headerExists = true;\n          } else {\n            headerExists = false;\n          }\n\n          if (intializeTrigger.length > 0 && initializationAllowed) {\n            initializationAllowed = false;\n\n            initializeAds();\n\n            intializeTrigger.length = 0;\n\n            setTimeout(() => {\n              initializationAllowed = true;\n            }, 100);\n          }\n        });\n\n        observer.observe(document.querySelector(\'body\'), {\n          childList: true,\n          subtree: true,\n          attributes: true,\n        });\n      };\n\n      addObserver();\n    </script>\n    <!-- CafeMedia Head Tag -->\n\n    <script src="https://js.sentry-cdn.com/cd8139814dd64a07af2a72fe40bed481.min.js" crossorigin="anonymous"></script>\n    <script>\n      if (!String.prototype.endsWith) {\n        String.prototype.endsWith = function (search, this_len) {\n          if (this_len === undefined || this_len > this.length) {\n            this_len = this.length;\n          }\n          return this.substring(this_len - search.length, this_len) === search;\n        };\n      }\n      if (window.Sentry) {\n        Sentry.onLoad(function () {\n          Sentry.init({\n            dsn:\n              \'true\' === \'true\'\n                ? \'https://cd8139814dd64a07af2a72fe40bed481@o1140342.ingest.sentry.io/6197424\'\n                : null,\n            environment: \'prod\',\n            release: \'1.12.6-main\',\n            allowUrls: [\'quordle.com/assets\', \'merriam-webster.com\'],\n            ignoreErrors: [\n              \'ResizeObserver\',\n              \'instantSearchSDKJSBridgeClearHighlight\',\n              \'webkitExitFullScreen\',\n              \'flat is not a function\',\n              "Object doesn\'t support property or method \'flat\'",\n              \'TypeError: cancelled\',\n              \'TypeError: Load failed\',\n              \'privateSpecialRepair\',\n              \'BetterJsPop\',\n              \'bannerNight\',\n              \'window.webkit.messageHandlers\',\n              \'jQuery\',\n              \'isMainframe\',\n              "e.addEventListener is not a function. (In \'e.addEventListener(t,r,n)\', \'e.addEventListener\' is undefined)",\n              \'Non-Error promise rejection captured with value: undefined\',\n              \'Non-Error promise rejection captured with value: fun-hooks: hooked function not ready\',\n              \'Non-Error promise rejection captured with value: Not implemented on this platform\',\n              \'Blocked a restricted frame with origin "https://www.merriam-webster.com" from accessing another frame.\',\n              \'NotSupportedError: Failed to load because no supported source was found.\',\n              \'AbortError: The play() request was interrupted because the media was removed from the document. https://goo.gl/LdLk22\',\n              "Cannot read properties of null (reading \'document\')",\n            ],\n            beforeSend(event) {\n              let shouldIgnore = false;\n\n              // Exclude events that are ad-related\n\n              if (event.breadcrumbs) {\n                shouldIgnore = event.breadcrumbs.some((breadcrumb) => {\n                  if (breadcrumb.data && breadcrumb.data.url) {\n                    return breadcrumb.data.url.includes(\'securepubads.g.doubleclick.net\');\n                  }\n\n                  return false;\n                });\n              }\n\n              // Exclude events that are attempting to fetch mraid.js\n\n              if (!shouldIgnore && event.exception) {\n                shouldIgnore = event.exception.values.some((exception) => {\n                  if (exception.stacktrace && exception.stacktrace.frames) {\n                    return exception.stacktrace.frames.some((frame) => {\n                      if (frame.filename) {\n                        return frame.filename.includes(\'mraid.js\');\n                      }\n\n                      return false;\n                    });\n                  }\n\n                  return false;\n                });\n              }\n\n              return shouldIgnore ? null : event;\n            },\n          });\n        });\n      }\n    </script>\n    <script type="module" crossorigin src="./assets/index.b441a8d7.js"></script>\n    <link rel="stylesheet" href="./assets/index.7e27898e.css">\n  <link rel="manifest" href="./manifest.webmanifest"></head>\n\n  <body>\n    <!-- Google Tag Manager (noscript) -->\n    <noscript\n      ><iframe\n        src="https://www.googletagmanager.com/ns.html?id=GTM-TFNTWFL"\n        height="0"\n        width="0"\n        style="display: none; visibility: hidden"\n      ></iframe\n    ></noscript>\n    <!-- End Google Tag Manager (noscript) -->\n    <noscript> You need to enable JavaScript to run this app. </noscript>\n    <div id="root"></div>\n    \n  </body>\n</html>\n'
+b'<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <meta charset="UTF-8" />\n    <title>Quordle</title>\n    <!--<meta name="description" content="Put your skills to the test and solve four words at once! You have 9 guesses to solve all four words. A new Quordle available each day to solve." />-->\n    <meta name="keywords" content="quordle, game, puzzle, word, words, letters, play, online, guess, brain teaser, dordle" />\n    <meta name="author" content="Freddie Meyer" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />\n\n    <!-- FB Meta Tags -->\n    <meta property="og:url" content="https://www.quordle.com" />\n    <meta property="og:type" content="website" />\n    <meta property="og:title" content="Quordle" />\n    <!--<meta property="og:description" content="Put your skills to the test and solve four words at once! You have 9 guesses to solve all four words. A new Quordle available each day to solve." />-->\n    <meta property="og:image" content="https://www.quordle.com/quordle-banner-1200.png" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n\n    <!-- Twitter Meta Tags -->\n    <meta name="twitter:card" content="summary_large_image" />\n    <meta property="twitter:domain" content="www.quordle.com" />\n\n    <link rel="canonical" href="https://www.quordle.com/" />\n\n    <meta name="theme-color" content="#111827" />\n    <meta name="color-scheme" content="dark light" />\n    <link rel="shortcut icon" sizes="192x192" href="favicon-192.png" />\n    <link rel="shortcut icon" sizes="128x128" href="favicon-128.png" />\n    <link rel="apple-touch-icon" sizes="128x128" href="favicon-128.png" />\n    <link rel="apple-touch-icon-precomposed" sizes="128x128" href="favicon-128.png" />\n    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />\n    <link rel="preconnect" href="https://fonts.googleapis.com" />\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n\n    <!-- Google Tag Manager -->\n    <script>\n      (function (w, d, s, l, i) {\n        w[l] = w[l] || [];\n        w[l].push({ \'gtm.start\': new Date().getTime(), event: \'gtm.js\' });\n        var f = d.getElementsByTagName(s)[0],\n          j = d.createElement(s),\n          dl = l != \'dataLayer\' ? \'&l=\' + l : \'\';\n        j.async = true;\n        j.src = \'https://www.googletagmanager.com/gtm.js?id=\' + i + dl;\n        f.parentNode.insertBefore(j, f);\n      })(window, document, \'script\', \'dataLayer\', \'GTM-TFNTWFL\');\n    </script>\n    <!-- End Google Tag Manager -->\n    <script>\n      window.dataLayer = window.dataLayer || [];\n      function gtag() {\n        dataLayer.push(arguments);\n      }\n    </script>\n    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />\n    <script>\n      window.__COMMIT_REF__ = \'47359e0\';\n      window.wordchecking_url = \'https://www.merriam-webster.com/games/quordle\';\n      window.quordle_url = \'https://www.quordle.com\';\n      window.quordle_time = \'2023-01-04\';\n      window.quordle_api_url = \'https://prod-mw-cms.m-w.com\';\n      try {\n        const mwsl = new URLSearchParams(location.search);\n        const mwpv = mwsl.get(\'mwrd\');\n        const mwac = mwsl.get(\'mwac\');\n\n        if (mwpv && mwac) {\n          gtag(\'event\', \'parameterCheck\', {\n            event_category: \'Quordle - Migration Check\',\n            event_label: \'Parameter Check Pass\',\n          });\n        }\n\n        const mwach = JSON.parse(window.atob(decodeURIComponent(mwac ? mwac : \'\')));\n        const mwgd = JSON.parse(window.atob(decodeURIComponent(mwpv ? mwpv : \'\')));\n\n        const mwfd = new Date(window.quordle_time + \'T00:00:00\').setHours(0, 0, 0, 0);\n        const mwtd = new Date(Date.now()).setHours(0, 0, 0, 0);\n\n        if (\n          mwpv &&\n          mwac &&\n          location.href.indexOf(window.wordchecking_url) >= 0 &&\n          !localStorage.getItem(\'mw_gs_quordle_migration\') &&\n          mwtd >= mwfd\n        ) {\n          localStorage.setItem(\'mw_gs_quordle_last_daily\', mwgd.daily.seed);\n          localStorage.setItem(\'mw_gs_quordle_daily_guesses\', mwgd.daily.guesses);\n          localStorage.setItem(\'mw_gs_quordle_daily_current\', mwgd.daily.current);\n          localStorage.setItem(\'mw_gs_quordle_daily_history\', mwgd.daily.history);\n          localStorage.setItem(\'mw_gs_quordle_daily_current_streak\', mwgd.daily.currentStreak);\n          localStorage.setItem(\'mw_gs_quordle_daily_max_streak\', mwgd.daily.maxStreak);\n\n          localStorage.setItem(\'mw_gs_quordle_last_free\', mwgd.free.seed);\n          localStorage.setItem(\'mw_gs_quordle_free_guesses\', mwgd.free.guesses);\n          localStorage.setItem(\'mw_gs_quordle_free_current\', mwgd.free.current);\n          localStorage.setItem(\'mw_gs_quordle_free_history\', mwgd.free.history);\n          localStorage.setItem(\'mw_gs_quordle_free_current_streak\', mwgd.free.currentStreak);\n          localStorage.setItem(\'mw_gs_quordle_free_max_streak\', mwgd.free.maxStreak);\n\n          localStorage.setItem(\'mw_gs_quordle_dark_mode\', mwgd.darkMode);\n          localStorage.setItem(\'mw_gs_quordle_colorblind\', mwgd.colorblind);\n          localStorage.setItem(\'mw_gs_quordle_vibration\', mwgd.vibration);\n          localStorage.setItem(\'mw_gs_quordle_achievement_notifs\', mwgd.achievementNotifs);\n          localStorage.setItem(\'mw_gs_quordle_keyboard_height\', mwgd.keyboardHeight);\n          localStorage.setItem(\'mw_gs_quordle_game_size\', mwgd.gameSize);\n          localStorage.setItem(\'mw_gs_quordle_share_time\', mwgd.shareTime);\n          localStorage.setItem(\'mw_gs_quordle_donation_time\', mwgd.donationTime);\n          localStorage.setItem(\'mw_gs_quordle_enter_bs_reversed\', mwgd.enterBsReversed);\n\n          localStorage.setItem(\'mw_gs_quordle_achievements\', mwach);\n          localStorage.setItem(\'mw_gs_quordle_migration\', true);\n\n          gtag(\'event\', \'completedMigration\', {\n            event_category: \'Quordle - Migration Check\',\n            event_label: \'Migration Completed with Data Saved\',\n            game_data: {\n              achievements: mwach,\n              stats: mwgd,\n            },\n          });\n\n          mwsl.delete(\'mwac\');\n          mwsl.delete(\'mwrd\');\n        } else if (\n          mwpv &&\n          mwac &&\n          location.href.indexOf(window.wordchecking_url) >= 0 &&\n          localStorage.getItem(\'mw_gs_quordle_migration\') &&\n          mwtd >= mwfd\n        ) {\n          mwsl.delete(\'mwac\');\n          mwsl.delete(\'mwrd\');\n\n          gtag(\'event\', \'alreadyMigrated\', {\n            event_category: \'Quordle - Migration Check\',\n            event_label: \'Already Migrated\',\n            game_data: {\n              achievements: mwach,\n              stats: mwgd,\n            },\n          });\n        }\n      } catch (err) {\n        console.log(err);\n        const mwsl = new URLSearchParams(location.search);\n        const mwpv = mwsl.get(\'mwrd\');\n        const mwac = mwsl.get(\'mwac\');\n        if (mwpv && mwac) {\n          gtag(\'event\', \'fail\', {\n            event_category: \'Quordle - Migration Check\',\n            event_label: \'Data is malformed / Error\',\n            game_data: {\n              mpv: mwpv,\n              mwac: mwac,\n            },\n          });\n        }\n      } finally {\n        window.quordle_load = true;\n        const mwsl = new URLSearchParams(location.search);\n        const mwpv = mwsl.get(\'mwrd\');\n        const mwac = mwsl.get(\'mwac\');\n\n        if (mwpv && mwac) {\n          window.history.replaceState({}, document.title, window.wordchecking_url + \'/\');\n        }\n      }\n    </script>\n\n    <!-- CafeMedia -->\n    <script>\n      const cafeMediaSiteId = \'62d82df2aa320b2a23fc1466\';\n      const insertHeadTag = () => {\n        window.adthrive = {};\n        window.adthrive.cmd = [];\n        window.adthrive.host = \'ads.adthrive.com\';\n        window.adthrive.plugin = \'cam-manual-spa\';\n        window.adthrive.threshold = Math.floor(Math.random() * 100 + 1);\n\n        const script = document.createElement(\'script\');\n        script.async = true;\n        script.type = \'text/javascript\';\n        script.src =\n          \'https://ads.adthrive.com/sites/\' + cafeMediaSiteId + \'/ads.min.js?threshold=\' + window.adthrive.threshold;\n        const node = document.getElementsByTagName(\'script\')[0];\n        node.parentNode.insertBefore(script, node);\n      };\n\n      const cleanUpSelectors = [\n        \'iframe[src*="track.adthrive"]\',\n        \'iframe[src*="d.agkn.com"]\',\n        \'iframe[src*="ads.adthrive"]\',\n        \'script[src*="ads.adthrive"]\',\n        \'script[src*="confiant"]\',\n        \'script[src*="securepubads"]\',\n        \'script[src*="amazon-adsystem"]\',\n        \'script[src*="scorecardresearch"]\',\n        \'script[src*="js.agkn.com"]\',\n        \'link[rel="stylesheet"][href^="https://ads.adthrive"]\',\n        \'.adthrive-comscore\',\n        \'.adthrive-ad\',\n      ];\n\n      const initCleanUpSelectors = [\n        \'.adthrive-comscore span\',\n        \'.adthrive-ccpa-link\',\n        \'.adthrive-privacy-preferences\',\n        \'.adthrive-comscore.adthrive-footer-message\',\n      ];\n\n      const cleanupAds = () => {\n        if (!window.adthrive) return;\n\n        document.body.classList.remove(\'adthrive-device-desktop\', \'adthrive-device-tablet\', \'adthrive-device-phone\');\n\n        initCleanUpSelectors.forEach((selector) =>\n          document.querySelectorAll(selector).forEach((el, i) => {\n            if (i > 0) el.remove();\n          })\n        );\n\n        if (window.googletag && window.googletag.destroySlots) {\n          window.googletag.destroySlots();\n        }\n\n        if (window.adthrive.slots && window.adthrive.slots._slots && window.adthrive.slots._slots.size) {\n          window.adthrive.slots._slots.forEach((slot) => {\n            window.adthrive.slots._slots.delete(slot);\n          });\n        }\n\n        if (\n          window.adthrive._googleAdManager &&\n          window.adthrive._googleAdManager._slots &&\n          window.adthrive._googleAdManager._slots._slots &&\n          window.adthrive._googleAdManager._slots._slots.size\n        ) {\n          window.adthrive._googleAdManager._slots._slots.forEach((slot) => {\n            window.adthrive._googleAdManager._slots._slots.delete(slot.id);\n          });\n        }\n\n        if (window.adthrive && window.adthrive._googleAdManager) {\n          window.adthrive._googleAdManager._started = false;\n        }\n\n        if (window.pbjs && typeof window.pbjs.removeAdUnit === \'function\') {\n          window.pbjs.removeAdUnit();\n        }\n\n        cleanUpSelectors.forEach((selector) => document.querySelectorAll(selector).forEach((el) => el.remove()));\n      };\n\n      const initializeAds = () => {\n        cleanupAds();\n        insertHeadTag();\n      };\n\n      let locationHref = document.location.href.split(\'?\')[0].replace(/#/, \'\').replace(/\\/+$/, \'\');\n      let footerExists = !!document.querySelector(\'#footer-placement\');\n      let headerExists = !!document.querySelector(\'#header-placement\');\n      let initializationAllowed = true;\n\n      const addObserver = () => {\n        if (!document.body || !document.querySelector(\'#root > div\')) {\n          setTimeout(addObserver, 50);\n          return;\n        }\n        const observer = new MutationObserver(() => {\n          const intializeTrigger = [];\n\n          const noParamHref = document.location.href.split(\'?\')[0].replace(/#/, \'\').replace(/\\/+$/, \'\');\n\n          if (locationHref !== noParamHref) {\n            locationHref = noParamHref;\n\n            intializeTrigger.push(true);\n          }\n\n          if (document.querySelector(\'#footer-placement\')) {\n            if (!footerExists) {\n              intializeTrigger.push(true);\n            }\n            footerExists = true;\n          } else {\n            footerExists = false;\n          }\n\n          if (document.querySelector(\'#header-placement\')) {\n            if (!headerExists) {\n              intializeTrigger.push(true);\n            }\n            headerExists = true;\n          } else {\n            headerExists = false;\n          }\n\n          if (intializeTrigger.length > 0 && initializationAllowed) {\n            initializationAllowed = false;\n\n            initializeAds();\n\n            intializeTrigger.length = 0;\n\n            setTimeout(() => {\n              initializationAllowed = true;\n            }, 100);\n          }\n        });\n\n        observer.observe(document.querySelector(\'body\'), {\n          childList: true,\n          subtree: true,\n          attributes: true,\n        });\n      };\n\n      addObserver();\n    </script>\n    <!-- CafeMedia Head Tag -->\n\n    <script src="https://js.sentry-cdn.com/cd8139814dd64a07af2a72fe40bed481.min.js" crossorigin="anonymous"></script>\n    <script>\n      if (!String.prototype.endsWith) {\n        String.prototype.endsWith = function (search, this_len) {\n          if (this_len === undefined || this_len > this.length) {\n            this_len = this.length;\n          }\n          return this.substring(this_len - search.length, this_len) === search;\n        };\n      }\n      if (window.Sentry) {\n        Sentry.onLoad(function () {\n          Sentry.init({\n            dsn:\n              \'true\' === \'true\'\n                ? \'https://cd8139814dd64a07af2a72fe40bed481@o1140342.ingest.sentry.io/6197424\'\n                : null,\n            environment: \'prod\',\n            release: \'1.12.6-main\',\n            allowUrls: [\'quordle.com/assets\', \'merriam-webster.com\'],\n            ignoreErrors: [\n              \'ResizeObserver\',\n              \'instantSearchSDKJSBridgeClearHighlight\',\n              \'webkitExitFullScreen\',\n              \'flat is not a function\',\n              "Object doesn\'t support property or method \'flat\'",\n              \'TypeError: cancelled\',\n              \'TypeError: Load failed\',\n              \'privateSpecialRepair\',\n              \'BetterJsPop\',\n              \'bannerNight\',\n              \'window.webkit.messageHandlers\',\n              \'jQuery\',\n              \'isMainframe\',\n              "e.addEventListener is not a function. (In \'e.addEventListener(t,r,n)\', \'e.addEventListener\' is undefined)",\n              \'Non-Error promise rejection captured with value: undefined\',\n              \'Non-Error promise rejection captured with value: fun-hooks: hooked function not ready\',\n              \'Non-Error promise rejection captured with value: Not implemented on this platform\',\n              \'Blocked a restricted frame with origin "https://www.merriam-webster.com" from accessing another frame.\',\n              \'NotSupportedError: Failed to load because no supported source was found.\',\n              \'AbortError: The play() request was interrupted because the media was removed from the document. https://goo.gl/LdLk22\',\n              "Cannot read properties of null (reading \'document\')",\n            ],\n            beforeSend(event) {\n              let shouldIgnore = false;\n\n              // Exclude events that are ad-related\n\n              if (event.breadcrumbs) {\n                shouldIgnore = event.breadcrumbs.some((breadcrumb) => {\n                  if (breadcrumb.data && breadcrumb.data.url) {\n                    return breadcrumb.data.url.includes(\'securepubads.g.doubleclick.net\');\n                  }\n\n                  return false;\n                });\n              }\n\n              // Exclude events that are attempting to fetch mraid.js\n\n              if (!shouldIgnore && event.exception) {\n                shouldIgnore = event.exception.values.some((exception) => {\n                  if (exception.stacktrace && exception.stacktrace.frames) {\n                    return exception.stacktrace.frames.some((frame) => {\n                      if (frame.filename) {\n                        return frame.filename.includes(\'mraid.js\');\n                      }\n\n                      return false;\n                    });\n                  }\n\n                  return false;\n                });\n              }\n\n              return shouldIgnore ? null : event;\n            },\n          });\n        });\n      }\n    </script>\n    <script type="module" crossorigin src="./assets/index.b441a8d7.js"></script>\n    <link rel="stylesheet" href="./assets/index.7e27898e.css">\n  <link rel="manifest" href="./manifest.webmanifest"></head>\n\n  <body>\n    <!-- Google Tag Manager (noscript) -->\n    <noscript\n      ><iframe\n        src="https://www.googletagmanager.com/ns.html?id=GTM-TFNTWFL"\n        height="0"\n        width="0"\n        style="display: none; visibility: hidden"\n      ></iframe\n    ></noscript>\n    <!-- End Google Tag Manager (noscript) -->\n    <noscript> You need to enable JavaScript to run this app. </noscript>\n    <div id="root"></div>\n    \n  </body>\n</html>\n'

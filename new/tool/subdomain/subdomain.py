@@ -18,7 +18,7 @@ else:
 	if "http" in url or "www" in url:
 		print (colored("[-_-] sorry enter url without http or www","red"))
 	else:
-		file = open("data-sploit/subdomain.txt","r")
+		file = open("./tool/subdomain/subdomain.txt","r")
 		read_list = file.read()
 		subdomains = read_list.splitlines()
 		file_name = input(colored("enter name text file : ","yellow"))
