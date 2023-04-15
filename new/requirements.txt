@@ -3,4 +3,4 @@ termcolor
 sockets
 python-whois
 beautifulsoup4
-pyautogui
+scapy
